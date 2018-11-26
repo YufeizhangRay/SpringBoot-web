@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>添加用户的模板页面</title>
+</head>
+<body>
+    <div class="main">
+        <br><br>
+        <form th:action="@{/addUser}" method="post">
+            用户名：<input type="text" name="username" th:value="${user.username}"><span style="color: red;" th:errors="${user.username}"></span><br><br>
+            用户密码：<input type="text" name="password"><span style="color: red;" th:errors="${user.password}"></span><br><br>
+            用户选中地址：<select name="address.id">
+            <option th:value="${address.id}" th:each="address:${addresses}">
+                [[${address.addressInfo}]]
+            </option>
+        </select><br><br>
+            用户名：<input type="submit" value="添加">
+        </form>
+    </div>
+</body>
+</html>
